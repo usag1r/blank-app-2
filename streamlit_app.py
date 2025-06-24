@@ -70,8 +70,8 @@ transform = transforms.ToTensor()
 
 
 train_data = TiledMNISTDataset(
-    csv_file='data/imagetiles/tiled/2x2/train/labels.csv',
-    image_dir='data/imagetiles/tiled/2x2/train/',
+    csv_file='./data/imagetiles/tiled/2x2/train/labels.csv',
+    image_dir='./data/imagetiles/tiled/2x2/train/',
     transform=transform
 )
 
