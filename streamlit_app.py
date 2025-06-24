@@ -133,20 +133,6 @@ data = TiledMNISTDataset(
     transform=transform
 )
 
-# ---------------------
-# Streamlit UI
-# ---------------------
-st.title("Tiled MNIST Explorer")
-st.markdown("Browse samples of your tiled MNIST dataset.")
-
-idx = st.slider("Pick a sample index", 0, len(data) - 1, 0)
-img, l1, l2, img_name = data[idx]
-
-st.image(img.squeeze().numpy(), caption=f"{img_name}", use_column_width=True)
-st.write("**Label 1 ⟶ Input sequence**:", l1.tolist())
-st.write("**Label 2 ⟶ Target sequence**:", l2.tolist())
-
-
 
 # # ------------------------------------------------------
 # CONFIG
@@ -168,4 +154,53 @@ VOCAB_SIZE = len(label_to_idx)
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+# ---------------------
+# Streamlit UI
+# ---------------------
+st.title("Tiled MNIST Explorer")
+st.markdown("Browse samples of your tiled MNIST dataset.")
+
+idx = st.slider("Pick a sample index", 0, len(data) - 1, 0)
+img, l1, l2, img_name = data[idx]
+
+st.image(img.squeeze().numpy(), caption=f"{img_name}", use_column_width=True)
+st.write("**Label 1 ⟶ Input sequence**:", l1.tolist())
+st.write("**Label 2 ⟶ Target sequence**:", l2.tolist())
 
