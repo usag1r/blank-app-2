@@ -83,23 +83,6 @@ class ViTWithDecoder(nn.Module):
         logits = self.decoder(tgt_seq, encoded)    # (B, T, V)
         return logits
 
-# ------------------------------------------------------
-# Demo forward pass (training loop not included)
-# ------------------------------------------------------
-if __name__ == "__main__":
-    model = ViTWithDecoder().to(DEVICE)
-
-    # Get a batch from the loader
-    sample_imgs, label1, label2 = next(iter(train_loader))
-    sample_imgs = sample_imgs.to(DEVICE)
-    label1 = label1.to(DEVICE)  # [B, 5] — starts with <start>
-    label2 = label2.to(DEVICE)  # [B, 5] — ends with <end>
-
-    # Pass through model
-    logits = model(sample_imgs, label1)  # Pass label1 as target_seq
-
-    print("Logits shape:", logits.shape)  # Expecting (B, T, V) = (batch_size, 5, vocab_size)
-
 
 
 class ViTWithDecoderAndClassifier(nn.Module):
@@ -156,5 +139,26 @@ def train(model, train_loader, epochs=1):
         avg_loss = total_loss / len(train_loader)
         print(f"Epoch {epoch+1}/{epochs}, Loss: {avg_loss:.4f}", end=" ||| ")
 
+
+# ------------------------------------------------------
+# Demo forward pass (training loop not included)
+# ------------------------------------------------------
+if __name__ == "__main__":
+    model = ViTWithDecoder().to(DEVICE)
+
+    # Get a batch from the loader
+    sample_imgs, label1, label2 = next(iter(train_loader))
+    sample_imgs = sample_imgs.to(DEVICE)
+    label1 = label1.to(DEVICE)  # [B, 5] — starts with <start>
+    label2 = label2.to(DEVICE)  # [B, 5] — ends with <end>
+
+    # Pass through model
+    logits = model(sample_imgs, label1)  # Pass label1 as target_seq
+
+    print("Logits shape:", logits.shape)  # Expecting (B, T, V) = (batch_size, 5, vocab_size)
+    train(model=model, train_loader=train_loader)
+
+
+
 #train
-model = train(model=model, train_loader=train_loader)
+#train(model=model, train_loader=train_loader)
