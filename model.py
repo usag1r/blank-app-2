@@ -297,7 +297,7 @@ def train(model, train_loader, epochs=1):
 
         avg_loss = total_loss / len(train_loader)
         print(f"Epoch {epoch+1}/{epochs}, Loss: {avg_loss:.4f}", end=" ||| ")
-
+    return model
 
 
 def build_model():
