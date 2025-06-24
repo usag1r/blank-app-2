@@ -106,7 +106,7 @@ print("Label 2:", label2_test)         # tensor([6, 6, 8, 2, 11])
 
 
 # Select the indices you want (e.g. 0 through 9)
-subset_indices = list(range(1000))
+subset_indices = list(range(100))
 
 # Create the subset
 train_subset = Subset(train_data, subset_indices)
