@@ -154,7 +154,7 @@ VOCAB_SIZE = len(label_to_idx)
 
 
 
-from model import train(model=model, train_loader=train_loader)  # Import the function you wrapped in model.py
+from model.py import train  # Import the function you wrapped in model.py
 model = train(model=model, train_loader=train_loader)
 
 
